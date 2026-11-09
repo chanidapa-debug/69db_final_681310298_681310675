@@ -188,17 +188,19 @@ function rowToken($row,$pkFields){$vals=[];foreach($pkFields as $pk)$vals[]=$row
       <thead>
         <tr>
           <?php foreach($listFields as $col): ?>
-            <th class="<?= $col==='pd_image_url'?'th-thumb':'' ?>"><?= h($fields[$col]['label'] ?? $col) ?></th>
+            <th class="<?= $col==='pd_image_url'?'th-thumb':'' ?>"><?= $col === '_row_number' ? 'ลำดับ' : h($fields[$col]['label'] ?? $col) ?></th>
           <?php endforeach; ?>
           <th class="th-actions">จัดการ</th>
         </tr>
       </thead>
       <tbody>
-      <?php foreach($rows as $r): ?>
+      <?php foreach($rows as $index => $r): ?>
         <tr>
           <?php foreach($listFields as $col): ?>
             <td class="<?= $col==='pd_image_url'?'td-thumb':'' ?>">
-              <?php if ($col === 'pd_image_url'): ?>
+             <?php if ($col === '_row_number'): ?>
+              <?= $index + 1 ?>
+             <?php elseif ($col === 'pd_image_url'): ?>
                 <div class="thumb-cell">
                   <?php if (!empty($r[$col])): ?>
                     <a href="<?= h($r[$col]) ?>" target="_blank" rel="noopener noreferrer" class="thumb-link" title="คลิกเพื่อดูรูปภาพเต็ม">

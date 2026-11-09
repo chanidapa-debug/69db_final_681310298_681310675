@@ -60,6 +60,6 @@ $modules = [
       'pd_id'=>['label'=>'สินค้า','type'=>'select','source'=>'products','source_key'=>'id_pd','source_label'=>'pd_name','required'=>true],
       'size_id'=>['label'=>'ขนาด','type'=>'select-static','options'=>['S'=>'S','M'=>'M','L'=>'L','XL'=>'XL'],'required'=>true],
     ],
-    'list'=>['pd_id','size_id']
+    'list'=>['_row_number','pd_id','size_id']
   ],
 ];
